@@ -1,0 +1,16 @@
+\documentclass[a4paper]{article}
+%\VignetteIndexEntry{glmmEP User Manual}
+%\VignettePackage{glmmEP} 
+\usepackage{pdfpages}
+
+\begin{document}
+
+\newread\PDFtoInclude
+\openin\PDFtoInclude=glmmEP.pdf
+\ifeof\PDFtoInclude
+\typeout{No file glmmEP.pdf}
+\else
+\includepdf[fitpaper=true,pages=-]{glmmEP.pdf}
+\fi
+
+\end{document}
