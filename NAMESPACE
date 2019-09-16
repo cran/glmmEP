@@ -16,5 +16,7 @@ importFrom(stats,runif)
 importFrom(utils,vignette)
 importFrom(matrixcalc,duplication.matrix)
 importFrom(lme4,glmer)
+importFrom(lme4,glmerControl)
+
 
 

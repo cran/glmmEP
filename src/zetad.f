@@ -3,11 +3,11 @@ cccccccccc FORTRAN subroutine zetad.f cccccccccc
 c For computation of the first derivative of
 c the "zeta" function as defined in the R package `sn'.
 
-c Last changed: 14 AUG 2017
+c Last changed: 16 MAY 2019
 
       subroutine zetad(x,ans)     
       double precision x,pi,rt2,ans,toler,tiny,ansprv,Cprv,Dprv,
-     +                 aj,Ccur,Dcur,Delta   
+     +                 anscur,aj,Ccur,Dcur,Delta   
       integer j
 
       if (x.gt.(-3.0)) then

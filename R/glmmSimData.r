@@ -12,7 +12,7 @@ glmmSimData <- function(seed=12345)
 
    # Set sample sizes:
 
-   m <- 250  
+   m <- 250
    nVec <- sample(20:30,m,replace=TRUE)
 
    # Set true values of parameters:

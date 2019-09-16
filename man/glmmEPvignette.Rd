@@ -7,6 +7,6 @@ glmmEPvignette()
 }
 \author{Matt Wand\email{matt.wand@uts.edu.au} and James Yu\email{james.yu@student.uts.edu.au}}
 \examples{
-glmmEPvignette()
+\donttest{glmmEPvignette()}
 }
 

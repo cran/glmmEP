@@ -3,7 +3,7 @@
 # For performing frequentist generalised linear mixed model
 # analysis via expectation propagation.
 
-# Last changed: 01 FEB 2018
+# Last changed: 14 MAY 2019
 
 glmmEP <- function(y,Xfixed=NULL,Xrandom,idNum,control=glmmEP.control())
 {
@@ -12,12 +12,21 @@ glmmEP <- function(y,Xfixed=NULL,Xrandom,idNum,control=glmmEP.control())
    idNumInp <- idNum
    idNum <- match(idNumInp,unique(idNumInp))
    
+   # Order all data matrices with respect to idNum:
+
+   idNumDataMats <- cbind(idNum,y,Xfixed,Xrandom)
+   idNumDataMats <- idNumDataMats[sort.list(idNumDataMats[,1]),]
+   idNum <- idNumDataMats[,1]
+   y <- idNumDataMats[,2]
+   if (is.null(Xfixed)) ncolXfixed <- 0
+   if (!is.null(Xfixed)) ncolXfixed <- ncol(Xfixed)
+   Xfixed <- as.matrix(idNumDataMats[,3:(ncolXfixed+2)])
+   Xrandom <- as.matrix(idNumDataMats[,(ncolXfixed+3):(ncolXfixed+ncol(Xrandom)+2)])
+   
    # Set dimension variables:
 
    m <- length(unique(idNum))
-   nVec <- rep(NA,m)
-   for (i in 1:m)
-      nVec[i] <- length(idNum[idNum==i])
+   nVec <- as.numeric(table(idNum))
    numObs <- length(y)
 
    # Compute vector of starting indices for each group:
@@ -118,7 +127,9 @@ glmmEP <- function(y,Xfixed=NULL,Xrandom,idNum,control=glmmEP.control())
    if (dF>0)
    {
       allData <- data.frame(y,Xfixed,Xrandom,idNum)
-      fitLapl <- glmer(y ~ Xfixed[,-1] + (-1+Xrandom|idNum),data=allData,family=binomial(link = "probit"))
+      fitLapl <- glmer(y ~ Xfixed[,-1] + (-1+Xrandom|idNum),data=allData,family=binomial(link = "probit"),
+                           control = glmerControl(check.nobs.vs.nRE = "ignore",optCtrl = list(maxfun = 20000),
+                           optimizer = "bobyqa"))
       betaLapl <- as.numeric(coefficients(summary(fitLapl))[,1])
       uHatLapl <- as.matrix(coefficients(fitLapl)$idNum)[,1:dR]
       sdVec <- attr(summary(fitLapl)$varcor$idNum,"stddev")

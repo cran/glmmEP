@@ -3,7 +3,7 @@ cccccccccc FORTRAN subroutine epllk.f cccccccccc
 c For computing the expectation propagation to the 
 c log-likelihood for probit mixed models.
 
-c Last changed: 24 MAY 2018
+c Last changed: 16 MAY 2019
 
       subroutine epllk(beta,etaSg0,etaSg,m,nVec,nMax,numObs,indStt,
      +                 idF,idR,idRsq,lena,lena2,nlena,yDagg,Xf,Xr,
@@ -12,7 +12,7 @@ c Last changed: 24 MAY 2018
      +                 etaIN2,eINa1,eINa2,eINb1,eINb2,etaPvF,etaPvS,
      +                 etaCrF,etaCrS,wk1,ipvt,A2ina1,A2inc1,A2mat,A2str,
      +                 R2comp,wk2,R5,R5TA2,vR5TA2,xkans1,xkans2,
-     +                 B2inb1,work,A2neg,B2mat,B2str,B2neg,
+     +                 B2inb1,work,A2neg,B2mat,B2neg,
      +                 xm2A2,det,wka,wkb,wkv,xmiscl,etaOut)
       double precision beta(idF),etaSg0,etaSg(lena),yDagg(numObs),
      +                 Xf(numObs,idF),Xr(numObs,idR),yDcur(nMax),
@@ -28,10 +28,9 @@ c Last changed: 24 MAY 2018
      +                 A2str(idR,idR),R2comp(idR,idR),wk2(idR),
      +                 R5(idR,idR),R5TA2(idR,idR),vR5TA2(idRsq),
      +                 xkans1(idR),xkans2(lena2),wka(idRsq),wkb(idRsq),
-     +                 b1str(idR),det(2),work(idR,idR),A2neg(idR,idR),
-     +                 B2mat(idR,idR),B2str(idR,idR),B2neg(idR,idR),
-     +                 xm2A2(idR,idR),wkv(idRsq),AsNans,eFtS0,xmiscl(3),
-     +                 etaOut(m,lena)
+     +                 det(2),work(idR,idR),A2neg(idR,idR),
+     +                 B2mat(idR,idR),B2neg(idR,idR),xm2A2(idR,idR),
+     +                 wkv(idRsq),AsNans,eFtS0,xmiscl(3),etaOut(m,lena)
       integer m,nVec(m),nMax,numObs,indStt(m),idR,idRsq,lena,lena2,
      +        nlena,idF,idFwk,i,j,k,kd,ipvt(idR),iPos,icnvgd,itNum,
      +        iEPmax
@@ -39,7 +38,7 @@ c Last changed: 24 MAY 2018
 
 c     Set the expectation propagation control parameters:
 
-      iEPmax = xmiscl(1)
+      iEPmax = int(xmiscl(1))
       EPrltl = xmiscl(2)
 
 c     Set 'idF' working variable:
@@ -199,13 +198,13 @@ c
 c Bottom of iteration loop.
 c 
 
-         if (itNum.ge.iEPmax) then
-            call intpr("",0,itNum,0)
-            call intpr("Warning: the number of expectation",34,itNum,0) 
-            call intpr("propagation iterations reached",30,itNum,0)
-            call intpr("its maximum value (EPmaxit).",28,itNum,0) 
-            call intpr("",0,itNum,0)
-         endif
+c         if (itNum.ge.iEPmax) then
+c            call intpr("",0,itNum,0)
+c            call intpr("Warning: the number of expectation",34,itNum,0) 
+c            call intpr("propagation iterations reached",30,itNum,0)
+c            call intpr("its maximum value (EPmaxit).",28,itNum,0) 
+c            call intpr("",0,itNum,0)
+c         endif
 
 c        Update the zeroth entries of the eta vectors:
 
@@ -227,7 +226,7 @@ c        Update the zeroth entries of the eta vectors:
 280         continue
            
             call cpbt(eINa1,eINa2,eINb1,eINb2,c0Cur,c1Cur,idR,idRsq,
-     +                lena2,Dd,DdPlus,wka,wkb,A2ina1,B2inb1,A2inc1,ipvt,
+     +                lena2,DdPlus,wka,wkb,A2ina1,B2inb1,A2inc1,ipvt,
      +                det,work,A2mat,A2neg,B2mat,B2neg,eFtS0) 
                        
             SUMlt0 = SUMlt0 + eFtS0

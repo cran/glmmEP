@@ -1,19 +1,18 @@
 cccccccccc FORTRAN subroutine cpbt.f cccccccccc
 
-c Last changed: 24 MAY 2018
+c Last changed: 16 MAY 2019
 
-      subroutine cpbt(a1,a2,b1,b2,c0,c1,idmn,idmnsq,lena2,Dd,DdPlus,
+      subroutine cpbt(a1,a2,b1,b2,c0,c1,idmn,idmnsq,lena2,DdPlus,
      +                wka,wkb,A2ina1,B2inb1,A2inc1,ipvt,det,work,A2mat,
      +                A2neg,B2mat,B2neg,ans)     
       double precision a1(idmn),a2(lena2),b1(idmn),b2(lena2),c0,
      +                 c1(idmn),A2ina1(idmn),B2inb1(idmn),A2inc1(idmn),
-     +                 wka(idmnsq),wkb(idmnsq),Dd(idmnsq,lena2),
-     +                 DdPlus(lena2,idmnsq),A2mat(idmn,idmn),
-     +                 A2neg(idmn,idmn),B2mat(idmn,idmn),
-     +                 B2neg(idmn,idmn),a1A2a1,b1B2b1,c1A2a1,c1A2c1,
-     +                 r2,xlgphr,det(2),work(idmn,idmn),xldmA2,xldmB2,
-     +                 ans
-      integer i,j,k,idmn,idmnsq,lena2,ipos,info,ipvt(idmn)
+     +                 wka(idmnsq),wkb(idmnsq),DdPlus(lena2,idmnsq),
+     +                 A2mat(idmn,idmn),A2neg(idmn,idmn),
+     +                 B2mat(idmn,idmn),B2neg(idmn,idmn),a1A2a1,b1B2b1,
+     +                 c1A2a1,c1A2c1,r2,xlgphr,det(2),work(idmn,idmn),
+     +                 xldmA2,xldmB2,ans
+      integer i,j,idmn,idmnsq,lena2,ipos,info,ipvt(idmn)
 
 c Obtain D_d^+*a_2 and D_d^+*b_2 :
 

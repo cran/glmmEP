@@ -3,7 +3,7 @@
 # For obtaining the expectation propagation approximate 
 # log-likelihood.
 
-# Last changed: 24 MAY 2018
+# Last changed: 16 MAY 2019
 
 EPlogLik <- function(parmVec,y,Xfixed=NULL,Xrandom,dF,dR,m,nVec,numObs,indStt,uHat=NULL,
                      EPmaxit,EPreltol)
@@ -95,7 +95,6 @@ EPlogLik <- function(parmVec,y,Xfixed=NULL,Xrandom,dF,dR,m,nVec,numObs,indStt,uH
    work <- matrix(0,idR,idR)
    A2neg <- matrix(0,idR,idR)
    B2mat <- matrix(0,idR,idR)
-   B2str <- matrix(0,idR,idR)
    B2neg <- matrix(0,idR,idR)
    
    # Allocate additional arrays used in call to "asn":
@@ -145,9 +144,9 @@ EPlogLik <- function(parmVec,y,Xfixed=NULL,Xrandom,dF,dR,m,nVec,numObs,indStt,uH
                       as.double(A2mat),as.double(A2str),as.double(R2comp),as.double(wk2),
                       as.double(R5),as.double(R5TA2),as.double(vR5TA2),as.double(xkpan1),
                       as.double(xkpan2),as.double(B2inb1),as.double(work),as.double(A2neg),
-                      as.double(B2mat),as.double(B2str),as.double(B2neg),as.double(xm2A2),
-                      as.double(det),as.double(wka),as.double(wkb),as.double(wkv),
-                      xmiscl=as.double(xmiscl),etaOut=as.double(etaOut))
+                      as.double(B2mat),as.double(B2neg),as.double(xm2A2),as.double(det),
+                      as.double(wka),as.double(wkb),as.double(wkv),xmiscl=as.double(xmiscl),
+                      etaOut=as.double(etaOut))
 
    # Return EP-approximate log-likelihood value for input parameters:
  

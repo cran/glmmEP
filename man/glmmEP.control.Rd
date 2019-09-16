@@ -18,8 +18,10 @@ glmmEP.control(confLev=0.95,BFGSmaxit=500,BFGSreltol=1e-10,
 \item{quiet}{Flag for specifying whether or not glmmEP() runs `quietly' or with progress reports printed to the screen. The default is FALSE.}
 \item{preTransfData}{Flag for specifying whether or not the predictor data are pre-transformed to the unit interval for fitting, with estimates, predictions and confidence intervals transformed to match the units of the original data before. The default is TRUE.}
 }
+\value{A list containing values of each of the fifteen control parameters, packaged to supply the \code{control} argument to \code{glmmEP}. The values for \code{glmmEP.control} can be specified in the call to \code{glmmEP}.
+}
 \author{Matt Wand\email{matt.wand@uts.edu.au} and James Yu\email{jamescfyu@gmail.com}}
-\references{Hall, P., Johnstone, I.M., Ormerod, J.T., Wand, M.P. and Yu, J. (2018). 
+\references{Hall, P., Johnstone, I.M., Ormerod, J.T., Wand, M.P. and Yu, J.C.F. (2018). 
 Fast and accurate binary response mixed model analysis via expectation propagation. Submitted.}
 \examples{
 library(glmmEP)

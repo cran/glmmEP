@@ -1,6 +1,6 @@
 cccccccccc FORTRAN subroutine kpbt.f cccccccccc
 
-c Last changed: 24 MAY 2018
+c Last changed: 28 MAY 2018
 
       subroutine kpbt(a1,a2,c0,c1,idmn,idmnsq,lena2,Dd,DdPlus,wk1,
      +                A2ina1,A2inc1,ipvt,A2mat,A2str,R2comp,wk2,
@@ -45,8 +45,8 @@ c Obtain A_2^(-1)c_1 and A_2^(-1)a1 (noting storage
 c of solution vectors in `c1' and `a1':
 
       call dgefa(A2mat,idmn,idmn,ipvt,info)
-      call dgesl(A2mat,idmn,idmn,ipvt,A2inc1,0.0)
-      call dgesl(A2mat,idmn,idmn,ipvt,A2ina1,0.0)
+      call dgesl(A2mat,idmn,idmn,ipvt,A2inc1,0)
+      call dgesl(A2mat,idmn,idmn,ipvt,A2ina1,0)
 
 c Obtain c_1^TA_2^(-1)c_1 and c1_T^A_2^(-1)a1:
 
