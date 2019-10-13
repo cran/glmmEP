@@ -3,7 +3,7 @@ cccccccccc FORTRAN subroutine asn.f cccccccccc
 c For computation of the log-partition function
 c of the Multivariate Normal distribution.
 
-c Last changed: 24 MAY 2018
+c Last changed: 17 SEP 2019
 
       subroutine asn(a1,a2,A2ina1,idmn,idmnsq,lena2,A2mat,xm2A2,DdPlus,
      +               wkv,ipvt,det,work,ans)     
@@ -43,7 +43,7 @@ c Obtain A_2^(-1)a1 (noting storage
 c of solution vector `a1'):
 
       call dgefa(A2mat,idmn,idmn,ipvt,info)
-      call dgesl(A2mat,idmn,idmn,ipvt,A2ina1,0.0)
+      call dgesl(A2mat,idmn,idmn,ipvt,A2ina1,0)
 
 c Obtain a1_T^A_2^(-1)a1:
 

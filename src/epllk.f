@@ -3,7 +3,7 @@ cccccccccc FORTRAN subroutine epllk.f cccccccccc
 c For computing the expectation propagation to the 
 c log-likelihood for probit mixed models.
 
-c Last changed: 16 MAY 2019
+c Last changed: 17 SEP 2019
 
       subroutine epllk(beta,etaSg0,etaSg,m,nVec,nMax,numObs,indStt,
      +                 idF,idR,idRsq,lena,lena2,nlena,yDagg,Xf,Xr,
@@ -28,7 +28,7 @@ c Last changed: 16 MAY 2019
      +                 A2str(idR,idR),R2comp(idR,idR),wk2(idR),
      +                 R5(idR,idR),R5TA2(idR,idR),vR5TA2(idRsq),
      +                 xkans1(idR),xkans2(lena2),wka(idRsq),wkb(idRsq),
-     +                 det(2),work(idR,idR),A2neg(idR,idR),
+     +                 det(2),work(idR,idR),A2neg(idR,idR),B2inb1(idR),
      +                 B2mat(idR,idR),B2neg(idR,idR),xm2A2(idR,idR),
      +                 wkv(idRsq),AsNans,eFtS0,xmiscl(3),etaOut(m,lena)
       integer m,nVec(m),nMax,numObs,indStt(m),idR,idRsq,lena,lena2,

@@ -1,6 +1,6 @@
 cccccccccc FORTRAN subroutine cpbt.f cccccccccc
 
-c Last changed: 16 MAY 2019
+c Last changed: 17 SEP 2019
 
       subroutine cpbt(a1,a2,b1,b2,c0,c1,idmn,idmnsq,lena2,DdPlus,
      +                wka,wkb,A2ina1,B2inb1,A2inc1,ipvt,det,work,A2mat,
@@ -50,11 +50,11 @@ c Obtain A_2^(-1)a_1 and B_2^(-1)b_1 (noting storage
 c of solution vectors in `a1' and `b1':
 
       call dgefa(A2mat,idmn,idmn,ipvt,info)
-      call dgesl(A2mat,idmn,idmn,ipvt,A2ina1,0.0)
-      call dgesl(A2mat,idmn,idmn,ipvt,A2inc1,0.0)
+      call dgesl(A2mat,idmn,idmn,ipvt,A2ina1,0)
+      call dgesl(A2mat,idmn,idmn,ipvt,A2inc1,0)
 
       call dgefa(B2mat,idmn,idmn,ipvt,info)
-      call dgesl(B2mat,idmn,idmn,ipvt,B2inb1,0.0)
+      call dgesl(B2mat,idmn,idmn,ipvt,B2inb1,0)
 
 c Obtain a_1^TA_2^(-1)a_1 and b1_T^B_2^(-1)b1:
 
