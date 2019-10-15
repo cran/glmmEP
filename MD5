@@ -1,4 +1,4 @@
-558bca7e7d22486703f283d6cdf5bac7 *DESCRIPTION
+b38eefdd57a984bef2aa9adf2207465c *DESCRIPTION
 f0bc185ff7c99822eb48b0cd5ac681aa *NAMESPACE
 e1e4b693fd0f8f801485c6fe77989e43 *R/AsubN.r
 5721fdc4b0336080ccf8e8c62890a58b *R/EPlogLik.r
@@ -32,7 +32,7 @@ a9f22984bfd9ca2da09c68fd9a937709 *src/dgedi.f
 fc7709b2729163d31bcc89d84e03ef92 *src/dgesl.f
 000c07f6ec3bcb3dc5e928b125e99634 *src/epllk.f
 6997c2dc2dbdc3975c3882169227fbcc *src/init.c
-071a60368398db08297e015e2ae42600 *src/kpbt.f
+cd1d8c1b63a41d42105d6d94fb6e97f8 *src/kpbt.f
 76b6196a83ed9d2692305aa09ebe1280 *src/logdet.f
 1f568a1dff98fe8ebe978111c78dc0d0 *src/logphi.f
 015f1cd5ee053c25da67c4563b25bbcd *src/zetad.f

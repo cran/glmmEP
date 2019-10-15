@@ -87,7 +87,7 @@ c Obtain R_5:
          do 100 i = 1,idmn
             wk2(i) = A2str(i,j)
 100      continue
-         call dgesl(R2comp,idmn,idmn,ipvt,wk2,0.0)
+         call dgesl(R2comp,idmn,idmn,ipvt,wk2,0)
          do 110 i = 1,idmn
             R5(i,j) = wk2(i)
 110      continue        
